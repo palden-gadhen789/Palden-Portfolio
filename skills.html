@@ -1,4 +1,4 @@
- v<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,7 +12,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Background matching home page */
+/* Matching background theme */
 body {
   background: linear-gradient(135deg, #fef9f0, #e0e7ff);
   color: #333;
@@ -60,60 +60,48 @@ body {
   border-radius: 15px;
 }
 
+/* Header */
 .page-content h1 {
   font-size: 2.5rem;
   color: #111827;
-  margin-bottom: 40px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
-/* Skill card styling */
-.skill {
-  background: #fef9f0;
-  border-radius: 15px;
-  padding: 25px 30px;
-  margin-bottom: 25px;
+/* Skills container */
+.skills-wrapper {
   display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
+  flex-direction: column;
+  gap: 25px;
 }
 
+/* Skill card */
+.skill {
+  padding: 25px;
+  background: #f9fafb;
+  border-left: 6px solid #4f46e5;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover interaction */
 .skill:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-.skill-icon {
-  font-size: 2rem;
-  color: #4f46e5;
-  flex-shrink: 0;
-}
-
-.skill-text h2 {
+.skill h2 {
   font-size: 1.5rem;
   color: #4f46e5;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-.skill-text p {
+.skill p {
   font-size: 1.1rem;
   color: #4b5563;
   line-height: 1.7;
 }
-
-/* Scroll fade-in animation */
-@keyframes fadeUp {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-.fade-in {
-  animation: fadeUp 0.8s forwards;
-}
-
 </style>
 </head>
 <body>
@@ -134,50 +122,26 @@ body {
 <main class="page-content">
   <h1>Skills</h1>
 
-  <div class="skill fade-in">
-    <div class="skill-icon">🧩</div>
-    <div class="skill-text">
+  <div class="skills-wrapper">
+
+    <div class="skill">
       <h2>Problem-Solving</h2>
-      <p>Hiking, school projects, and sports have taught me to think quickly, find solutions under pressure, and adapt to unexpected challenges.</p>
+      <p>Hiking, school projects, and sports have taught me to think quickly, adapt to challenges, and find solutions even under pressure.</p>
     </div>
-  </div>
 
-  <div class="skill fade-in">
-    <div class="skill-icon">💬</div>
-    <div class="skill-text">
+    <div class="skill">
       <h2>Communication</h2>
-      <p>Gained from collaborating in team sports, group projects, and guided hikes. I’ve learned to share ideas clearly, listen actively, and coordinate effectively with others.</p>
+      <p>Through team sports, group projects, and guided hikes, I have learned how to share ideas clearly, listen actively, and coordinate effectively.</p>
     </div>
-  </div>
 
-  <div class="skill fade-in">
-    <div class="skill-icon">📅</div>
-    <div class="skill-text">
+    <div class="skill">
       <h2>Time Management & Planning</h2>
-      <p>Hiking, school pack schedules, sports, and structured learning experiences have helped me prioritize tasks, plan activities efficiently, and balance multiple responsibilities.</p>
+      <p>School pack schedules, structured learning experiences, sports, and long hikes helped me plan ahead, prioritize tasks, and balance multiple responsibilities.</p>
     </div>
+
   </div>
 
 </main>
-
-<script>
-// Scroll-triggered fade-in
-const skills = document.querySelectorAll('.fade-in');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.style.animationDelay = '0s';
-      entry.target.classList.add('fade-up');
-      entry.target.style.opacity = 1;
-      entry.target.style.transform = 'translateY(0)';
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-skills.forEach(skill => observer.observe(skill));
-</script>
 
 </body>
 </html>
