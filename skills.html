@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ v<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Palden Portfolio — Hobbies</title>
+<title>Palden Portfolio — Skills</title>
 <style>
 * {
   margin: 0;
@@ -12,7 +12,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Updated background to match home page */
+/* Background matching home page */
 body {
   background: linear-gradient(135deg, #fef9f0, #e0e7ff);
   color: #333;
@@ -63,40 +63,57 @@ body {
 .page-content h1 {
   font-size: 2.5rem;
   color: #111827;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   text-align: center;
 }
 
-.page-content .hobby {
+/* Skill card styling */
+.skill {
+  background: #fef9f0;
+  border-radius: 15px;
+  padding: 25px 30px;
   margin-bottom: 25px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-.page-content .hobby h2 {
+.skill:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.skill-icon {
+  font-size: 2rem;
+  color: #4f46e5;
+  flex-shrink: 0;
+}
+
+.skill-text h2 {
   font-size: 1.5rem;
   color: #4f46e5;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-.page-content .hobby p {
+.skill-text p {
   font-size: 1.1rem;
   color: #4b5563;
   line-height: 1.7;
-  margin-bottom: 20px;
 }
 
-.image-container {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 15px;
-  flex-wrap: wrap;
+/* Scroll fade-in animation */
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+.fade-in {
+  animation: fadeUp 0.8s forwards;
 }
 
-.image-container img {
-  width: 45%;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
 </style>
 </head>
 <body>
@@ -115,29 +132,52 @@ body {
 </header>
 
 <main class="page-content">
-  <h1>Hobbies</h1>
+  <h1>Skills</h1>
 
-  <div class="hobby">
-    <h2>Football</h2>
-    <p>I am passionate about football and have been actively involved since a young age. I served as the captain of my U-16 school team, which competed in the Youth League. Through football, I have developed leadership, teamwork, and strategic thinking.</p>
-
-    <!-- Football image placeholder -->
-    <div class="image-container">
-      <img src="football514287224_770066085772888_1227082881513054069_n.jpg" alt="U-16 Team">
+  <div class="skill fade-in">
+    <div class="skill-icon">🧩</div>
+    <div class="skill-text">
+      <h2>Problem-Solving</h2>
+      <p>Hiking, school projects, and sports have taught me to think quickly, find solutions under pressure, and adapt to unexpected challenges.</p>
     </div>
   </div>
 
-  <div class="hobby">
-    <h2>Hiking</h2>
-    <p>Hiking is one of my favorite ways to connect with nature and challenge myself. I have gone on many hikes, but the toughest and most memorable ones have been the Jomolhari hike and the Dagala hike. These experiences taught me perseverance, problem-solving, and resilience.</p>
+  <div class="skill fade-in">
+    <div class="skill-icon">💬</div>
+    <div class="skill-text">
+      <h2>Communication</h2>
+      <p>Gained from collaborating in team sports, group projects, and guided hikes. I’ve learned to share ideas clearly, listen actively, and coordinate effectively with others.</p>
+    </div>
+  </div>
 
-    <!-- Hiking image placeholders -->
-    <div class="image-container">
-      <img src="IMG_20240515_122357_619 jomolhari(2).jpg" alt="Jomolhari Hike">
-      <img src="dagala.jpg" alt="Dagala Hike">
+  <div class="skill fade-in">
+    <div class="skill-icon">📅</div>
+    <div class="skill-text">
+      <h2>Time Management & Planning</h2>
+      <p>Hiking, school pack schedules, sports, and structured learning experiences have helped me prioritize tasks, plan activities efficiently, and balance multiple responsibilities.</p>
     </div>
   </div>
 
 </main>
+
+<script>
+// Scroll-triggered fade-in
+const skills = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.style.animationDelay = '0s';
+      entry.target.classList.add('fade-up');
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+skills.forEach(skill => observer.observe(skill));
+</script>
+
 </body>
 </html>
