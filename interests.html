@@ -1,59 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Palden Portfolio — Interests</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-body{background:#f0f4f8;color:#333;line-height:1.6;}
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:20px 50px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
-.logo{font-weight:bold;font-size:1.5rem;color:#4f46e5;}
-.nav-links{list-style:none;display:flex;gap:20px;}
-.nav-links li a{text-decoration:none;color:#333;font-weight:500;transition:color 0.3s;}
-.nav-links li a:hover{color:#4f46e5;}
-.page-content{max-width:900px;margin:100px auto;padding:40px;background:#fff;box-shadow:0 5px 15px rgba(0,0,0,0.05);border-radius:15px;}
-.page-content h1{font-size:2.5rem;color:#111827;margin-bottom:30px;text-align:center;}
-.page-content .interest{margin-bottom:25px;}
-.page-content .interest h2{font-size:1.5rem;color:#4f46e5;margin-bottom:10px;}
-.page-content .interest p{font-size:1.1rem;color:#4b5563;line-height:1.7;margin-bottom:20px;}
-.image-container{display:flex;gap:20px;justify-content:center;margin-top:15px;}
-.image-container img{width:45%;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+body{
+  background: linear-gradient(135deg,#fef9f0,#e0e7ff);
+  color:#111827;
+  min-height:100vh;
+  padding:120px 20px 60px;
+  display:flex; justify-content:center;
+  opacity:0; animation:fadeIn .9s ease forwards;
+}
+@keyframes fadeIn{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} }
+
+.navbar{ position:fixed; top:0; left:0; width:100%; display:flex; align-items:center; padding:18px 48px; background:transparent; z-index:40; }
+.logo{ font-weight:700; color:#4f46e5; }
+.nav-links{ list-style:none; display:flex; gap:18px; margin-left:auto; }
+.nav-links a{ text-decoration:none; color:#333; font-weight:500; position:relative; transition:color .25s; }
+.nav-links a::after{ content:""; position:absolute; bottom:-3px; left:0; width:0; height:2px; background:#4f46e5; transition:width .28s; }
+.nav-links a:hover{ color:#4f46e5; }
+.nav-links a:hover::after{ width:100%; }
+
+.wrapper{ max-width:1000px; width:100%; display:grid; gap:18px; grid-template-columns: 1fr 320px; align-items:start; }
+@media(max-width:920px){ .wrapper{ grid-template-columns: 1fr; } }
+
+.main{ background:rgba(255,255,255,0.64); padding:20px; border-radius:12px; box-shadow:0 10px 30px rgba(15,23,42,0.05); }
+.sidebar{ background:rgba(255,255,255,0.64); padding:18px; border-radius:12px; box-shadow:0 10px 30px rgba(15,23,42,0.05); height:fit-content; }
+
+.interest-list{ display:grid; gap:12px; margin-top:12px; }
+.interest{ padding:14px; border-radius:10px; background:#fff; transition:transform .28s ease; }
+.interest:hover{ transform:translateY(-6px); box-shadow:0 16px 36px rgba(15,23,42,0.06); }
+
+.fade-in{ opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease; }
+.fade-in.in-view{ opacity:1; transform:none; }
+
+.btn{ display:inline-block; text-decoration:none; background:#4f46e5; color:#fff; padding:10px 14px; border-radius:8px; transition:transform .22s; }
+.btn:hover{ transform:translateY(-3px); }
+
+@media (prefers-reduced-motion: reduce){ *{ animation:none!important; transition:none!important; } }
 </style>
 </head>
 <body>
 
-<header>
 <nav class="navbar">
-<div class="logo">Palden</div>
-<ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="interests.html">Interests</a></li>
-<li><a href="hobbies.html">Hobbies</a></li>
-<li><a href="skills.html">Skills</a></li>
-</ul>
+  <div class="logo">Palden</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="interests.html" aria-current="page">Interests</a></li>
+    <li><a href="hobbies.html">Hobbies</a></li>
+    <li><a href="skills.html">Skills</a></li>
+  </ul>
 </nav>
-</header>
 
-<main class="page-content">
-<h1>Interests</h1>
+<main class="wrapper">
+  <div class="main fade-in">
+    <h2>My Interests</h2>
+    <p style="color:#4b5563;">A short list of topics I enjoy exploring.</p>
 
-<div class="interest">
-<h2>Web Design</h2>
-<p>I enjoy designing simple, clean, and user-friendly websites. I focus on creating modern layouts and intuitive navigation, and I love experimenting with new ideas to make websites both functional and visually appealing.</p>
-</div>
+    <div class="interest-list">
+      <div class="interest fade-in">
+        <h3>Web Development</h3>
+        <p>Building simple interfaces, learning HTML/CSS and small JavaScript additions.</p>
+      </div>
 
-<div class="interest">
-<h2>Sculpting</h2>
-<p>Sculpting is one of my favorite creative outlets. I enjoy working with my hands and shaping materials into meaningful forms, which helps me stay patient, focused, and imaginative.</p>
+      <div class="interest fade-in">
+        <h3>Hiking & Outdoors</h3>
+        <p>Planning routes, reading maps, and enjoying nature with friends and classmates.</p>
+      </div>
 
-<div class="image-container">
-<img src="https://via.placeholder.com/400x250?text=Image+1" alt="Interest Image 1">
-<img src="https://via.placeholder.com/400x250?text=Image+2" alt="Interest Image 2">
-</div>
-</div>
+      <div class="interest fade-in">
+        <h3>Sports</h3>
+        <p>Team sports that teach communication, endurance, and strategy.</p>
+      </div>
+    </div>
 
+    <div style="margin-top:16px;">
+      <a class="btn" href="about.html">Learn more about me</a>
+    </div>
+  </div>
+
+  <aside class="sidebar fade-in">
+    <h4>Quick links</h4>
+    <ul style="list-style:none;margin-top:10px;">
+      <li style="margin-bottom:8px;"><a href="#" class="btn" style="display:inline-block;">Projects</a></li>
+      <li style="margin-bottom:8px;"><a href="#" class="btn" style="display:inline-block;">Gallery</a></li>
+    </ul>
+  </aside>
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const obs = new IntersectionObserver((entries, o) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in-view'); o.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+});
+</script>
+
 </body>
 </html>
