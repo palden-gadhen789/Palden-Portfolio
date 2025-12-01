@@ -6,57 +6,56 @@
 <title>Palden Portfolio — Home</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+
 body{
-  background: linear-gradient(135deg, #fef9f0, #e0e7ff);
-  color:#333;
   height:100vh;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
-  text-align:center;
-
-  /* fade-in on page load */
-  opacity:0;
-  animation: fadeIn 1s ease forwards;
+  background: linear-gradient(135deg, #fef9f0, #e0e7ff);
+  overflow:hidden;
+  color:#333;
+  position:relative;
+  animation: bgShift 15s ease-in-out infinite alternate;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* subtle animated background shift */
+@keyframes bgShift{
+  0%{background: linear-gradient(135deg, #fef9f0, #e0e7ff);}
+  50%{background: linear-gradient(135deg, #fef9f0, #d1d5fb);}
+  100%{background: linear-gradient(135deg, #fef9f0, #e0e7ff);}
 }
 
+/* Navbar */
 .navbar{
-  width:100%;
-  display:flex;
-  justify-content:flex-start;
-  align-items:center;
-  padding:20px 50px;
-  background:transparent;
   position:absolute;
   top:0;
   left:0;
+  width:100%;
+  padding:20px 50px;
+  display:flex;
+  align-items:center;
+  background:transparent;
+  z-index:2;
 }
 
 .logo{
   font-weight:bold;
   font-size:1.5rem;
   color:#4f46e5;
+  margin-right:auto; /* keeps it top-left */
 }
 
 .nav-links{
   list-style:none;
   display:flex;
   gap:20px;
-  margin-left:auto;
 }
 
 .nav-links li a{
   text-decoration:none;
   color:#333;
   font-weight:500;
-
-  /* underline animation */
   position:relative;
   transition:color 0.3s;
 }
@@ -69,7 +68,7 @@ body{
   width:0%;
   height:2px;
   background:#4f46e5;
-  transition:width .3s ease;
+  transition:width 0.3s ease;
 }
 
 .nav-links li a:hover{
@@ -80,84 +79,118 @@ body{
   width:100%;
 }
 
+/* Main hero content */
 .home-content{
+  text-align:center;
   max-width:700px;
-  margin-top:100px;
-
-  /* fade + gentle rise */
   animation: fadeUp 1.2s ease forwards;
   opacity:0;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp{
+  from{opacity:0; transform: translateY(20px);}
+  to{opacity:1; transform: translateY(0);}
 }
 
+/* Heading with subtle gradient */
 .home-content h1{
   font-size:3rem;
   margin-bottom:20px;
-  color:#111827;
-
-  transition: transform .3s ease;
+  font-weight:800;
+  background: linear-gradient(90deg, #4f46e5 0%, #6366f1 50%, #4f46e5 100%);
+  -webkit-background-clip: text;
+  color:transparent;
+  background-size:200% 200%;
+  animation: gradientMove 4s ease infinite alternate;
+  transition: transform 0.3s ease;
 }
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  100%{background-position:100% 50%;}
+}
+
 .home-content h1:hover{
   transform: translateY(-3px);
 }
 
+/* Subtitle */
 .home-content p{
   font-size:1.2rem;
   margin-bottom:30px;
   color:#4b5563;
-
-  transition: transform .3s ease;
+  transition: transform 0.3s ease;
 }
+
 .home-content p:hover{
   transform: translateY(-2px);
 }
 
-/* Button subtle hover lift */
+/* Button */
 .btn{
   display:inline-block;
   background:#4f46e5;
   color:#fff;
   padding:12px 30px;
   border-radius:8px;
-  transition: transform .25s ease, box-shadow .25s ease;
   text-decoration:none;
   font-weight:500;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .btn:hover{
   transform: translateY(-4px);
-  box-shadow:0 12px 30px rgba(0,0,0,0.12);
+  box-shadow:0 12px 30px rgba(79,70,229,0.25);
+}
+
+/* Optional floating accent shapes */
+.shape{
+  position:absolute;
+  border-radius:50%;
+  opacity:0.1;
+  animation: floatShape 8s ease-in-out infinite alternate;
+  z-index:1;
+}
+
+.shape1{width:200px;height:200px;background:#4f46e5;top:10%;left:5%;}
+.shape2{width:150px;height:150px;background:#6366f1;bottom:15%;right:10%;}
+.shape3{width:100px;height:100px;background:#4f46e5;top:50%;right:20%;}
+
+@keyframes floatShape{
+  0%{transform: translateY(0);}
+  100%{transform: translateY(-20px);}
 }
 
 @media(max-width:768px){
   .home-content h1{font-size:2.5rem;}
   .home-content p{font-size:1.1rem;}
+  .nav-links{gap:15px;}
 }
 </style>
 </head>
 <body>
 
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+
 <header>
-<nav class="navbar">
-<div class="logo">Palden</div>
-<ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="interests.html">Interests</a></li>
-<li><a href="hobbies.html">Hobbies</a></li>
-<li><a href="skills.html">Skills</a></li>
-</ul>
-</nav>
+  <nav class="navbar">
+    <div class="logo">Palden</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="interests.html">Interests</a></li>
+      <li><a href="hobbies.html">Hobbies</a></li>
+      <li><a href="skills.html">Skills</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main class="home-content">
-<h1>Palden Gadhen Nima</h1>
-<p>A student in the Royal Academy</p>
-<a href="about.html" class="btn">Learn More About Me</a>
+  <h1>Palden Gadhen Nima</h1>
+  <p>A student in the Royal Academy</p>
+  <a href="about.html" class="btn">Learn More About Me</a>
 </main>
 
 </body>
