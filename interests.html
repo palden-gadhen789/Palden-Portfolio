@@ -68,6 +68,14 @@ body{
   margin-bottom:25px;
 }
 
+/* Flex layout for side-by-side content */
+.page-content .interest.side-by-side{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
 .page-content .interest h2{
   font-size:1.5rem;
   color:#4f46e5;
@@ -84,11 +92,13 @@ body{
 .image-container{
   display:flex;
   justify-content:center;
-  margin-top:15px;
+  margin-top:0;
+  flex:1; /* allow the image to take half space */
 }
 
 .image-container img{
-  width:50%;
+  width:100%;
+  max-width:300px; /* adjust image width */
   border-radius:25px;
   box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
@@ -117,10 +127,11 @@ body{
 <p>I enjoy designing simple, clean, and user-friendly websites. I focus on creating modern layouts and intuitive navigation, and I love experimenting with new ideas to make websites both functional and visually appealing.</p>
 </div>
 
-<div class="interest">
+<div class="interest side-by-side">
+<div class="text">
 <h2>Sculpting</h2>
 <p>Sculpting is one of my favorite creative outlets. I enjoy working with my hands and shaping materials into meaningful forms, which helps me stay patient, focused, and imaginative.</p>
-
+</div>
 <div class="image-container">
 <img src="img.jpg" alt="Interest Image 1">
 </div>
